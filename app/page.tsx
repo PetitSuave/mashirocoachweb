@@ -7,7 +7,7 @@ import {LuMail, LuPhoneIncoming, LuReceiptEuro} from "react-icons/lu";
 import {ScreenWideSection} from "./components/screen-wide-section";
 
 const cards = [{
-    title: "Kafe s koučkou",
+    title: "Kafe s koučem",
     text: <> Pojďme si nezávisle pokecat o&nbsp;tom, co ti koučink může přinést a&nbsp;jak nastavit naši spolupráci. </>,
     text2: <>On-line<br /> 30 minut <br /> Zdarma </>,
     link: "/work"
@@ -27,21 +27,65 @@ const cards = [{
 export default function Page() {
     return (
         <div className="relative min-h-screen">
-            {
-                //bg-purple-200 to section - tady ty barvicky zatim nebrat vazne, to jen chuc vdiet jak to vypada. musime vyresit na celou sirku stejne jak ma opredloha a navic tam bude obrazek}
-            }
-            <ScreenWideSection
-                background={
-                <Image
+            <ScreenWideSection>
+                <section className="relative w-screen -ml-[calc(50vw-50%)] bg-teal-800">
+                    <div className="flex flex-col w-full max-w-[960px] mx-auto justify-center">                        {/*     background={
+               <Image
                     className="-z-10 object-bottom object-cover filter brightness-75"
                     src={"/photos/bg-heather-cut-01.jpeg"} alt={"Flowers"} fill
-                />}>
-                <p className="text-3xl leading-tight font font-semibold mt-16 mb-16 mx-9 text-white">
-                    Společně vytvoříme cestu, která bude skutečně tvoje.
-                    {
-                        //TODO: odsud by to chtelo odkaz na stranku, ktera bude vysvetlovat proc raw individualni kouicng - nebo mozna odkaz na konkretni bloc post o tomhle?
-                    }
-                </p>
+                />}*/}
+                        <p className="text-3xl leading-tight font font-semibold mt-16 mb-16 mx-9 text-white">
+                            Společně vytvoříme cestu, která bude skutečně tvoje.
+                            {
+                                //TODO: odsud by to chtelo odkaz na stranku, ktera bude vysvetlovat proc raw individualni kouicng - nebo mozna odkaz na konkretni bloc post o tomhle?
+                            }
+                        </p>
+                    </div>
+                </section>
+            </ScreenWideSection>
+            <section className="relative">
+                <div className="flex mt-12 mb-12 mx-auto flex-col-reverse md:flex-row ">
+                    <div className="flex md:flex-row md:w-2/3 flex-col md:ml-9 mb-9">
+                        <div className="prose prose-neutral dark:prose-invert">
+                            <h1 className="mb-12 text-2xl font-medium tracking-tight">
+                                K čemu to je? Co mi to přinese?
+                                {
+                                    //TODO: Bud tady nebo k fotce by se melo dat tlacitko zjistit vice a tam dat muj pribeh a certifikace.
+                                }
+                            </h1>
+                            <p>
+                                Děje se ti tohle?
+                                Tady je k tomu moje řešení! A něco k tomu napíšu.
+                            </p>
+                            <p>
+                                Koučink je skvělá věc pro .... blab balsnja asbdjasbda  bsadbasjdb asjbdak
+                                blab balsnja asbdjasbda  bsadbasjdb asjbdak blab balsnja asbdjasbda
+                                bsadbasjdb asjbdak blab balsnja asbdjasbda  bsadbasjdb asjbdak
+                            </p>
+                            <p>
+                                Pojď to zkusit vyber si co ti sedí z produktů níže!
+                            </p>
+                        </div>
+                    </div>
+                    <div className="md:w-1/3 m-6">
+                        <Image src="/photos/bluechair.webp" alt={metaData.name}
+                               width={672} height={672}
+                               className="ml-24 sm:max-w-96 mx-auto md:max-w-full"
+                        />
+                    </div>
+                </div>
+            </section>
+            <ScreenWideSection background={<Image
+                className="-z-10 object-center object-cover"
+                src={"/photos/bg-forest-sharp-thin.jpg"} alt={"Calm Forest"} fill
+            />}>
+                <div className="flex flex-col md:flex-row py-16">
+                    {cards.map(card => (
+                        <div key={card.title} className="w-full md:w-1/3">
+                            <OfferCard title={card.title} text={card.text} text2={card.text2} link={card.link}/>
+                        </div>
+                    ))}
+                </div>
             </ScreenWideSection>
             <section className="relative">
                 <div className="flex mt-12 mb-12 mx-auto flex-col-reverse md:flex-row ">
@@ -76,19 +120,7 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-            <ScreenWideSection background={<Image
-                className="-z-10 object-center object-cover"
-                src={"/photos/bg-forest-sharp-thin.jpg"} alt={"Calm Forest"} fill
-            />}>
-                <div className="flex flex-col md:flex-row py-16">
-                    {cards.map(card => (
-                        <div key={card.title} className="w-full md:w-1/3">
-                            <OfferCard title={card.title} text={card.text} text2={card.text2} link={card.link}/>
-                        </div>
-                    ))}
-                </div>
-            </ScreenWideSection>
-            <section className="relative w-screen -ml-[calc(50vw-50%)] bg-violet-100" id="contact">
+            <section className="relative w-screen -ml-[calc(50vw-50%)] bg-cyan-200" id="contact">
                 <div className="">
                     <div className="flex flex-col w-full max-w-[960px] mx-auto justify-center">
                         <div className=" mt-16 ml-6 md:ml-9 text-2xl font-medium tracking-tight">
@@ -100,7 +132,7 @@ export default function Page() {
                                     Kontaktovat mě můžete pomocí <br/> e-mailu nebo kontaktního formuláře.
                                 </p>
                                 <p className="mb-6 flex">
-                                    <LuMail className="mt-1 mr-3"/> katerina@urban.coach
+                                    <LuMail className="mt-1 mr-3"/> stefa.kubin@gmail.com
                                 </p>
                                 <p className="mb-6 flex">
                                     <LuPhoneIncoming className="mr-3 size-10"/> Pokud se chcete spojit po telefonu,

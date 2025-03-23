@@ -18,7 +18,6 @@ function SocialLink({ href, icon: Icon }) {
 function SocialLinks() {
   return (
     <div className="flex text-lg gap-3.5 float-right transition-opacity duration-300 hover:opacity-90">
-      <SocialLink href={socialLinks.instagram} icon={LuInstagram} />
       <SocialLink href={socialLinks.facebook} icon={LuFacebook} />
       <SocialLink href={socialLinks.linkedin} icon={LuLinkedin} />
       <SocialLink href={socialLinks.email} icon={LuMail} />
@@ -32,14 +31,7 @@ export default function Footer() {
           <small className="block lg:pt-16 pt-12 pb-12 lg:pb-16 md:ml-9 ml-6 mr-6">
               <time>© {YEAR}</time>
               {" "}
-              <a
-                  className="no-underline"
-                  href={socialLinks.instagram}
-                  target="_blank"
-                  rel="noopener noreferrer"
-              >
                   {metaData.title}
-              </a>
               <SocialLinks/>
           </small>
       </ScreenWideSection>
