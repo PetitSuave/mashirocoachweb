@@ -1,5 +1,10 @@
 import Link from "next/link";
-import { formatDate, getBlogPosts } from "app/lib/posts";
+import {getBlogPosts } from "app/lib/posts";
+import {metaData} from "../config";
+import Image from "next/image";
+import {ScreenWideSection} from "../components/screen-wide-section";
+import React from "react";
+import {BlogFilterComponent} from "../components/blogFilter";
 
 export const metadata = {
   title: "Blog",
@@ -7,39 +12,23 @@ export const metadata = {
 };
 
 export default function BlogPosts() {
-  let allBlogs = getBlogPosts();
+    const allBlogs = getBlogPosts(); // Předpokládáme, že tato funkce vrací všechny blogy
 
-  return (
-    <section>
-      <h1 className="mb-8 text-2xl font-medium tracking-tight">Blog</h1>
-      <div>
-        {allBlogs
-          .sort((a, b) => {
-            if (
-              new Date(a.metadata.publishedAt) >
-              new Date(b.metadata.publishedAt)
-            ) {
-              return -1;
-            }
-            return 1;
-          })
-          .map((post) => (
-            <Link
-              key={post.slug}
-              className="flex flex-col space-y-1 mb-4 transition-opacity duration-200 hover:opacity-80"
-              href={`/blog/${post.slug}`}
-            >
-              <div className="w-full flex flex-col sm:flex-row justify-between items-start sm:items-center space-y-1 sm:space-y-0 sm:space-x-2">
-                <p className="text-black dark:text-white tracking-tight">
-                  {post.metadata.title}
-                </p>
-                <p className="text-neutral-600 dark:text-neutral-400 tabular-nums text-sm">
-                  {formatDate(post.metadata.publishedAt, false)}
-                </p>
-              </div>
-            </Link>
-          ))}
-      </div>
-    </section>
-  );
-}
+    return (
+        <div className="relative min-h-screen">
+            <ScreenWideSection>
+                <section className="relative w-screen -ml-[calc(50vw-50%)] bg-teal-800 mb-6">
+                    <div className="flex flex-col w-full max-w-[960px] mx-auto justify-center">
+                        <p className="text-3xl leading-tight font font-semibold mt-16 mb-16 mx-9 text-white">
+                            Blog: Místo, kde se dozvíš víc.
+                        </p>
+                    </div>
+                </section>
+            </ScreenWideSection>
+            <section>
+                {/* Předáme všechny blogy do klientské komponenty */}
+                <BlogFilterComponent allBlogs={allBlogs}/>
+            </section>
+        </div>
+);
+          }
