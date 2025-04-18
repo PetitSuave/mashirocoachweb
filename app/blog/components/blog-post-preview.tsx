@@ -16,10 +16,16 @@ const BlogPostPreview = ({ post }: BlogPostPreviewProps) => {
                 className="flex flex-col space-y-1 transition-opacity duration-200 hover:opacity-80"
                 href={`/blog/${post.slug}`}
             >
-                <Image src="/photos/joga_temp.jpg" alt={metaData.name}
-                       width={672} height={672}
-                       className="sm:max-w-96 mx-auto md:max-w-full"
-                />
+                {post.metadata.image && (
+                    <div className="w-full aspect-[16/10] relative overflow-hidden">
+                        <Image
+                            src={post.metadata.image}
+                            alt={metaData.name}
+                            fill
+                            className="object-cover"
+                        />
+                    </div>
+                )}
 
                 <div className="p-6">
                     <p className="text-black dark:text-white tracking-tight text-sm font-mono mb-3">
