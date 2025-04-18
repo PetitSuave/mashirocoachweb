@@ -35,7 +35,7 @@ export default function Page() {
                     src={"/photos/bg-heather-cut-01.jpeg"} alt={"Flowers"} fill
                 />}*/}
                         <p className="text-3xl leading-tight font font-semibold mt-16 mb-16 mx-9 text-white">
-                            Společně vytvoříme cestu, která bude skutečně tvoje.
+                            Tohle je hrozně cool moto co tě namotivuje.
                             {
                                 //TODO: odsud by to chtelo odkaz na stranku, ktera bude vysvetlovat proc raw individualni kouicng - nebo mozna odkaz na konkretni bloc post o tomhle?
                             }
@@ -115,7 +115,7 @@ export default function Page() {
                     <div className="md:w-1/3 m-6">
                         <Image src="/photos/tmp_ProfilePicture.jpg" alt={metaData.name}
                                width={672} height={672}
-                               className="rounded-full sm:max-w-96 mx-auto md:max-w-full"
+                               className="ml-24 sm:max-w-96 mx-auto md:max-w-full"
                         />
                     </div>
                 </div>
