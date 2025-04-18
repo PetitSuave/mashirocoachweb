@@ -1,13 +1,6 @@
 import fs from "fs";
 import path from "path";
-
-type Metadata = {
-  title: string;
-  publishedAt: string;
-  summary: string;
-  tags: string;
-  image?: string;
-};
+import {BlogPost, Metadata} from "./types";
 
 function parseFrontmatter(fileContent: string) {
   let frontmatterRegex = /---\s*([\s\S]*?)\s*---/;
@@ -36,7 +29,7 @@ function readMDXFile(filePath: string) {
   return parseFrontmatter(rawContent);
 }
 
-function getMDXData(dir: string) {
+function getMDXData(dir: string): BlogPost[] {
   const blacklist = ['custom-mdx-examples.mdx', 'getting-started.mdx']
   let mdxFiles = getMDXFiles(dir).filter(file => !blacklist.includes(file));
   return mdxFiles.map((file) => {
