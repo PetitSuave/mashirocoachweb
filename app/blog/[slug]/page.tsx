@@ -100,10 +100,15 @@ export default function Blog({ params }) {
               </div>
             </div>
             <div className="md:w-2/3 m-6">
-              <Image src="/photos/joga_temp.jpg" alt={metaData.name}
-                     width={672} height={672}
-                     className="sm:max-w-96 mx-auto md:max-w-full"
-              />
+              {post.metadata.image && (
+                  <Image
+                      src={post.metadata.image}
+                      alt={post.metadata.title}
+                      width={1280}
+                      height={720}
+                      className="object-cover w-full h-auto"
+                  />
+              )}
             </div>
           </div>
         </section>
