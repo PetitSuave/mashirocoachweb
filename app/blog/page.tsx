@@ -2,8 +2,9 @@ import Link from "next/link";
 import {getBlogPosts } from "app/lib/posts";
 import {metaData} from "../config";
 import Image from "next/image";
-import React from "react";
 import {ScreenWideSection} from "../components/screen-wide-section";
+import React from "react";
+import {BlogFilterComponent} from "../components/blogFilter";
 
 export const metadata = {
   title: "Blog",
@@ -11,9 +12,10 @@ export const metadata = {
 };
 
 export default function BlogPosts() {
-  let allBlogs = getBlogPosts();
+    const allBlogs = getBlogPosts(); // Předpokládáme, že tato funkce vrací všechny blogy
+    const filteredBlogs = allBlogs;
 
-  return (
+    return (
       <div className="relative min-h-screen">
           <ScreenWideSection>
               <section className="relative w-screen -ml-[calc(50vw-50%)] bg-teal-800 mb-6">
@@ -26,7 +28,11 @@ export default function BlogPosts() {
           </ScreenWideSection>
           <section>
               <div className="flex flex-wrap">
-                  {allBlogs
+                  {/* Předáme všechny blogy do klientské komponenty */}
+                  <BlogFilterComponent allBlogs={allBlogs} />
+
+                  {/* Zobrazení filtrovaných blogů */}
+                  {filteredBlogs
                       .sort((a, b) => {
                           if (
                               new Date(a.metadata.publishedAt) >
