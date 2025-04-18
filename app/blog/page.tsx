@@ -1,10 +1,7 @@
-import Link from "next/link";
-import {getBlogPosts } from "app/lib/posts";
-import {metaData} from "../config";
-import Image from "next/image";
-import {ScreenWideSection} from "../components/screen-wide-section";
 import React from "react";
-import {BlogFilterComponent} from "../components/blogFilter";
+import {getBlogPosts } from "app/lib/posts";
+import {ScreenWideSection} from "../components/screen-wide-section";
+import {BlogList} from "./components/blog-list";
 
 export const metadata = {
   title: "Blog",
@@ -16,19 +13,15 @@ export default function BlogPosts() {
 
     return (
         <div className="relative min-h-screen">
-            <ScreenWideSection>
-                <section className="relative w-screen -ml-[calc(50vw-50%)] bg-teal-800 mb-6">
-                    <div className="flex flex-col w-full max-w-[960px] mx-auto justify-center">
-                        <p className="text-3xl leading-tight font font-semibold mt-16 mb-16 mx-9 text-white">
-                            Blog: Místo, kde se dozvíš víc.
-                        </p>
-                    </div>
-                </section>
+            <ScreenWideSection background={<div className="absolute w-full h-full -z-10 bg-teal-800" />}>
+                <h1 className="text-3xl leading-tight font font-semibold mt-16 mb-16 mx-9 text-white">
+                    Blog: Místo, kde se dozvíš víc.
+                </h1>
             </ScreenWideSection>
-            <section>
+            <section className="mt-6">
                 {/* Předáme všechny blogy do klientské komponenty */}
-                <BlogFilterComponent allBlogs={allBlogs}/>
+                <BlogList allBlogs={allBlogs}/>
             </section>
         </div>
 );
-          }
+}
