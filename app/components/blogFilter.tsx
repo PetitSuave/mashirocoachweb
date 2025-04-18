@@ -1,34 +1,41 @@
 'use client'; // Tento řádek je potřeba, aby byla komponenta považována za klientskou
 
-import React, { useState } from 'react';
 import Link from "next/link";
 import Image from "next/image";
 import {metaData} from "../config";
+import React, { useState, useEffect } from "react";
+
 
 export function BlogFilterComponent({ allBlogs }: { allBlogs: any[] }) {
     const [selectedTag, setSelectedTag] = useState('all'); // Stav pro výběr tagu
     const [filteredBlogs, setFilteredBlogs] = useState(allBlogs); // Počáteční stav pro všechny blogy
 
-    // Funkce pro filtrování blogů podle tagu
-    const handleTagSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-        const selected = e.target.value;
-        setSelectedTag(selected);
-
-        // Filtrování blogů
-        const filtered = selected === 'all'
+    // Když se změní selectedTag, přefiltruj blogy
+    useEffect(() => {
+        const filtered = selectedTag === 'all'
             ? allBlogs
-            : allBlogs.filter((post) => post.metadata.tags.includes(selected));
-
+            : allBlogs.filter((post) =>
+                post.metadata.tags.toLowerCase().includes(selectedTag.toLowerCase())
+            );
         setFilteredBlogs(filtered); // Nastavíme filtrované blogy
-    };
+    })
 
     return (
         <div>
-            <select onChange={handleTagSelect} value={selectedTag}>
-                <option value="all">Všechny</option>
-                <option value="jóga">Jóga</option>
-                <option value="koučink">Koučink</option>
-            </select>
+            <div className="flex flex-wrap gap-2 my-4">
+                {["all", "jóga", "koučink"].map((tag) => (
+                    <button
+                        key={tag}
+                        onClick={() => setSelectedTag(tag)}
+                        className={`px-4 py-2 rounded-full text-sm border transition
+        ${selectedTag === tag
+                            ? "bg-teal-700 text-white border-teal-700"
+                            : "bg-white text-teal-700 border-teal-700 hover:bg-teal-100"}`}
+                    >
+                        {tag === "all" ? "Všechny" : tag.charAt(0).toUpperCase() + tag.slice(1)}
+                    </button>
+                ))}
+            </div>
 
             <div className="flex flex-wrap">
 
