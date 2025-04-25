@@ -5,8 +5,10 @@ import {OfferCard} from "./components/offer-card";
 import ContactForm from "./components/contact-form";
 import {LuMail, LuPhoneIncoming, LuReceiptEuro} from "react-icons/lu";
 import {ScreenWideSection} from "./components/screen-wide-section";
+import ReferenceCarousel from "./components/reference-carousel";
 
-const cards = [{
+
+const offerCards = [{
     title: "Kafe s koučem",
     text: <> Pojďme si nezávisle pokecat o&nbsp;tom, co ti koučink může přinést a&nbsp;jak nastavit naši spolupráci. </>,
     text2: <>On-line<br /> 30 minut <br /> Zdarma </>,
@@ -23,6 +25,33 @@ const cards = [{
     link: "/movement"
 }
 ]
+
+const referenceCards = [{
+    name: "Agi",
+    title: "pomohlo mi to na vsechny problemy",
+    text: <>"Tenhle koucink mi prisel hrozne uzitecny, rozhodne bych to vsem doporucila. Nevahejte a ozvete se Mashirovi. Sice je tohle jen testovaci text, ale i tam sem si jista, ze to vsem hrozne moc pomuze, is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letras including versions of Lorem Ipsum."</>
+}, {
+    name: "Gaba",
+    title: "nevedela jsem co cekat, ale bylo to skvely",
+    text: <>"Sla jsem na to nekolikrat protoze mi to pomahalo delat veci, ktery jsem chtela delat. Urcite to muzu vsem doporucit, koucovani bylo skvela vec a urcite do toho pujdu znova za nejaou dobu s novym tematem. is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing like Aldus PageMaker including versions of Lorem Ipsum."</>
+}, {
+    name: "Agi",
+    title: "kdybych to znal uz driv, tak je muj zivot lepsi",
+    text: <>"Tenhle koucink mi prisel hrozne uzitecny, rozhodne bych to vsem doporucila. Nevahejte a ozvete se Mashirovi. Sice je tohle jen testovaci text, ale i tam sem si jista, ze to vsem hrozne moc pomuze, is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages."</>
+}, {
+    name: "Gaba",
+    title: "nevedela jsem co cekat, ale bylo to skvely",
+    text: <>"Sla jsem na to nekolikrat protoze mi to pomahalo delat veci, ktery jsem chtela delat. Urcite to muzu vsem doporucit, koucovani bylo skvela vec a urcite do toho pujdu znova za nejaou dobu s novym tematem. is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset."</>
+}, {
+    name: "Agi",
+    title: "nevedela jsem co cekat, ale bylo to skvely",
+    text: <>"Tenhle koucink mi prisel hrozne uzitecny, rozhodne bych to vsem doporucila. Nevahejte a ozvete se Mashirovi. Sice je tohle jen testovaci text, ale i tam sem si jista, ze to vsem hrozne moc pomuze, is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently."</>
+}, {
+    name: "Gaba",
+    title: "nevedela jsem co cekat, ale bylo to skvely",
+    text: <>"Sla jsem na to nekolikrat protoze mi to pomahalo delat veci, ktery jsem chtela delat. Urcite to muzu vsem doporucit, koucovani bylo skvela vec a urcite do toho pujdu znova za nejaou dobu s novym tematem. is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum."</>
+}]
+
 
 export default function Page() {
     return (
@@ -80,7 +109,7 @@ export default function Page() {
                 src={"/photos/bg-forest-sharp-thin.jpg"} alt={"Calm Forest"} fill
             />}>
                 <div className="flex flex-col md:flex-row py-16">
-                    {cards.map(card => (
+                    {offerCards.map(card => (
                         <div key={card.title} className="w-full md:w-1/3">
                             <OfferCard title={card.title} text={card.text} text2={card.text2} link={card.link}/>
                         </div>
@@ -120,7 +149,7 @@ export default function Page() {
                     </div>
                 </div>
             </section>
-            <section className="relative w-screen -ml-[calc(50vw-50%)] bg-cyan-200" id="contact">
+            <section className="relative w-screen -ml-[calc(50vw-50%)] bg-sky-200" id="contact">
                 <div className="">
                     <div className="flex flex-col w-full max-w-[960px] mx-auto justify-center">
                         <div className=" mt-16 ml-6 md:ml-9 text-2xl font-medium tracking-tight">
@@ -151,6 +180,19 @@ export default function Page() {
                     </div>
                 </div>
             </section>
+            <ScreenWideSection background={<Image
+                className="-z-10 object-center object-cover"
+                src={"/photos/bg-temp_2.jpeg"} alt={"Calm Forest"} fill
+            />}>
+                <ReferenceCarousel referenceCards={referenceCards} />
+                {/*<div className="flex flex-col md:flex-row py-16">*/}
+                {/*    {referenceCards.map(card => (*/}
+                {/*        <div key={card.name} className="w-full md:w-1/3">*/}
+                {/*            <ReferenceCard title={card.title} name={card.name} text={card.text}/>*/}
+                {/*        </div>*/}
+                {/*    ))}*/}
+                {/*</div>*/}
+            </ScreenWideSection>
         </div>
     );
 }
