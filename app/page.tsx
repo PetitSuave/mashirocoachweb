@@ -182,7 +182,7 @@ export default function Page() {
             </section>
             <ScreenWideSection background={<Image
                 className="-z-10 object-center object-cover"
-                src={"/photos/grass_plains_tmp.jpeg"} alt={"Calm Forest"} fill
+                src={"/photos/bg-temp_2.jpeg"} alt={"Calm Forest"} fill
             />}>
                 <ReferenceCarousel referenceCards={referenceCards} />
                 {/*<div className="flex flex-col md:flex-row py-16">*/}
